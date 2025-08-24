@@ -155,4 +155,3 @@ def render_roi_calculator(df_roi):
     
     for rec in recommendations:
         st.info(rec)
-s
