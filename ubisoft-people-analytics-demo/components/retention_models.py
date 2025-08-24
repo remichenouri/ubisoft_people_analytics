@@ -92,7 +92,11 @@ def render_retention_models(df_retention):
     
     # Prédiction en temps réel
     prediction_input = [[salary_input, wlb_input, career_input, manager_input, neuro_binary]]
-    retention_prob = model.predict_proba(prediction_input)[0][1]
+    proba = model.predict_proba(prediction_input)
+    if proba.shape[1] >= 2:
+        retention_prob = proba[0][1]
+    else:
+        retention_prob = proba[0][0]
     
     st.metric("Retention Probability", f"{retention_prob:.1%}", "Predicted Likelihood")
     
@@ -102,3 +106,4 @@ def render_retention_models(df_retention):
         st.warning("⚡ Medium Risk - Monitor closely")
     else:
         st.success("✅ Low Risk - Employee likely to stay")
+
