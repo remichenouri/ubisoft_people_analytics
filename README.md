@@ -49,4 +49,29 @@ Dans l'industrie du gaming, où la créativité et l'innovation sont cruciales, 
 - 📊 Métriques diversité & inclusion
 
 ## 📁 Structure Repository
+├── business-case/ # ROI et études d'impact
+├── screenshots/ # Captures interface
+├── docs/ # Documentation technique
+├── src/ # Code source
+├── data/ # Datasets (anonymisés)
+├── models/ # Modèles ML entraînés
+├── tests/ # Tests unitaires
+└── deployment/ # Configuration déploiement
 
+
+## 🏆 Avantages Concurrentiels
+
+1. **Expertise Unique** : Combinaison data science + psychologie clinique
+2. **ROI Prouvé** : Métriques business quantifiées sur 18 mois
+3. **Production-Ready** : Architecture scalable et sécurisée
+4. **Conformité RGPD** : Respect total vie privée collaborateurs
+
+## 📞 Contact
+
+**Rémi Chenouri** - Data Analyst spécialisé Neurodiversité  
+📧 chenouri.remi@proton.me  
+💼 [LinkedIn](https://linkedin.com/in/remi-chenouri)  
+🔗 [Portfolio GitHub](https://github.com/remichenouri)
+
+---
+*Transformons la neurodiversité en avantage concurrentiel dans le gaming* 🎮
