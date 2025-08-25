@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports: ["8501:8501"]
+    environment:
+      DATABASE_URL: postgresql://etl:etl@db:5432/upa
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    depends_on: [db, mlflow]
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: upa
+      POSTGRES_USER: etl
+      POSTGRES_PASSWORD: etl
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  mlflow:
+    image: mlflow/mlflow:2.9.2
+    command: mlflow server --host 0.0.0.0 --backend-store-uri /mlflow --default-artifact-root /mlflow/artifacts
+    ports: ["5000:5000"]
+    volumes: [mlruns:/mlflow]
+
+volumes:
+  pgdata:
+  mlruns:
