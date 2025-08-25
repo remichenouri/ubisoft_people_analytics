@@ -1,0 +1,16 @@
+repos:
+- repo: https://github.com/psf/black
+  rev: 23.9.1
+  hooks: [ { id: black } ]
+
+- repo: https://github.com/charliermarsh/ruff
+  rev: v0.0.295
+  hooks: [ { id: ruff } ]
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.3.0
+  hooks: [ { id: mypy } ]
+
+- repo: https://github.com/pytest-dev/pytest
+  rev: 7.4.2
+  hooks: [ { id: pytest } ]
