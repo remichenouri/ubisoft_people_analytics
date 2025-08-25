@@ -8,6 +8,8 @@
 ![License](https://img.shields.io/github/license/remichenouri/ubisoft_people_analytics?color=2dce89)
 ![CI](https://github.com/remichenouri/ubisoft_people_analytics/actions/workflows/ci.yml/badge.svg)
 ![Coverage](https://codecov.io/gh/remichenouri/ubisoft_people_analytics/branch/main/graph/badge.svg)
+![Docs](https://img.shields.io/badge/Docs-MkDocs-blue)
+![Release](https://img.shields.io/github/v/release/remichenouri/ubisoft_people_analytics)
 
 ---
 
