@@ -1,0 +1,15 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+    - run: pip install -r requirements.txt
+    - run: ruff --select=E,F .
+    - run: pytest --cov=src
+    - run: docker build -t ubisoft_people_analytics .
