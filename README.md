@@ -83,12 +83,19 @@ streamlit run src/app.py
 ## 📁 Structure du dépôt
 ubisoft_people_analytics/
 ├── business-case/ # ROI & études d’impact
+
 ├── screenshots/ # GIF + captures interface
+
 ├── docs/ # Documentation technique (MkDocs)
+
 ├── src/ # Code source & API
+
 ├── data/ # Jeux de données anonymisés
+
 ├── models/ # Modèles ML entraînés
+
 ├── tests/ # Tests unitaires (pytest)
+
 └── deployment/ # Dockerfile, K8s manifests
 
 ---
