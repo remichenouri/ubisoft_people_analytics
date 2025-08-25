@@ -82,6 +82,7 @@ streamlit run src/app.py
 
 ## 📁 Structure du dépôt
 ubisoft_people_analytics/
+
 ├── business-case/ # ROI & études d’impact
 
 ├── screenshots/ # GIF + captures interface
