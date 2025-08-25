@@ -78,8 +78,6 @@ pip install -r requirements.txt
 3. Lancer l’app Streamlit
 streamlit run src/app.py
 
-text
-
 ---
 
 ## 📁 Structure du dépôt
@@ -92,8 +90,6 @@ ubisoft_people_analytics/
 ├── models/ # Modèles ML entraînés
 ├── tests/ # Tests unitaires (pytest)
 └── deployment/ # Dockerfile, K8s manifests
-
-text
 
 ---
 
