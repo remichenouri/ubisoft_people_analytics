@@ -1,0 +1,84 @@
+###############################################################################
+#  Python – Streamlit – Data projects
+###############################################################################
+
+# ───────── Environnements virtuels ─────────
+.env
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ───────── Fichiers compilés & caches ──────
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+
+# ───────── Journaux & rapports tests ───────
+*.log
+coverage.*          # .coverage, .coverage.xml …
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# ───────── Données locales & secrets ───────
+*.sqlite*
+*.db
+*.pkl
+*.joblib
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.env                 # variables d’environnement
+secrets.toml          # secrets Streamlit
+
+# ───────── Notebooks & checkpoints ─────────
+.ipynb_checkpoints/
+
+# ───────── Builds / distribution ───────────
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+*.manifest
+
+# ───────── Documentation / site MkDocs ─────
+docs/_build/
+site/
+
+# ───────── IDE & éditeurs ───────────────────
+.vscode/
+.idea/
+*.code-workspace
+.spyderproject
+.spyproject
+.ropeproject
+
+# ───────── Conteneurs & déploiement ────────
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# ───────── Streamlit Cloud artefacts ───────
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# ───────── Modèles & artefacts ML ──────────
+models/
+mlruns/
+checkpoints/
+runs/
+
+# ───────── Fichiers temporaires généraux ───
+*.swp
+*.bak
+*.tmp
+*~ 
