@@ -7,6 +7,7 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![License](https://img.shields.io/github/license/remichenouri/ubisoft_people_analytics?color=2dce89)
 ![CI](https://github.com/remichenouri/ubisoft_people_analytics/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://codecov.io/gh/remichenouri/ubisoft_people_analytics/branch/main/graph/badge.svg**
 
 ---
 
