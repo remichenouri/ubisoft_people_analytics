@@ -50,12 +50,19 @@ Dans l'industrie du gaming, où la créativité et l'innovation sont cruciales, 
 
 ## 📁 Structure Repository
 ├── business-case/ # ROI et études d'impact
+
 ├── screenshots/ # Captures interface
+
 ├── docs/ # Documentation technique
+
 ├── src/ # Code source
+
 ├── data/ # Datasets (anonymisés)
+
 ├── models/ # Modèles ML entraînés
+
 ├── tests/ # Tests unitaires
+
 └── deployment/ # Configuration déploiement
 
 
