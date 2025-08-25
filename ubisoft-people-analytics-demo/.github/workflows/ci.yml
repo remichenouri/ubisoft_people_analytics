@@ -5,16 +5,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.9'
-    - run: pip install -r requirements.txt
-    - run: ruff --select=E,F .
-    - run: pytest --cov=src
-    - run: docker build -t ubisoft_people_analytics .
-    - run: pytest --cov=src --cov-report=xml
-    - uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
+      - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - run: pip install -r requirements.txt
+      - run: ruff --select=E,F .
+      - run: pytest --cov=src --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
