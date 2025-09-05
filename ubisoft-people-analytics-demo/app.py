@@ -6,6 +6,10 @@ import os
 from utils.helpers import load_css, format_number, create_gaming_themed_chart, display_gaming_easter_eggs
 from data.gaming_data import UbisoftSpecificData, get_gaming_industry_stats
 
+if st.sidebar.button("🔄 Clear Cache"):
+    st.cache_data.clear()
+    st.experimental_rerun()
+
 # Dans la fonction main(), après st.set_page_config
 def main():
     # Charger le CSS personnalisé
@@ -161,3 +165,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
