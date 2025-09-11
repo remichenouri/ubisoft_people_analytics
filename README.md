@@ -36,7 +36,7 @@ IA qui détecte automatiquement les profils neurodivergents et génère des reco
 
 **ROI total : €2.87M sur 18 mois**
 
-*Méthodologie de calcul détaillée dans [business_case/roi_calculation.md](business_case/roi_calculation.md)*
+*Méthodologie de calcul détaillée dans [ubisoft-people-analytics-demo/business_case/roi_calculation.md](ubisoft-people-analytics-demo/business_case/roi_calculation.md)*
 
 ## 🛠️ Architecture technique
 
