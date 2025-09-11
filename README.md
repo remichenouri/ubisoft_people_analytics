@@ -56,17 +56,6 @@ I[Performance Data] --> B
 - **Deployment** : Docker, Kubernetes, AWS ECS
 - **Monitoring** : MLflow, Prometheus, Grafana
 
-## 🚀 Démonstration
-
-### Interface principale
-![Dashboard Executive](screenshots/dashboard_executive.png)
-
-### Détection profils neurodivergents  
-![Neurodiversity Detection](screenshots/neurodiversity_detection.png)
-
-### Recommandations RH
-![HR Recommendations](screenshots/hr_recommendations.png)
-
 ## 📈 Modèles ML implémentés
 
 | Modèle | Cas d'usage | Accuracy | F1-Score | Explainabilité |
@@ -75,7 +64,7 @@ I[Performance Data] --> B
 | **XGBoost** | Prédiction turnover | 92.1% | 0.89 | Feature importance |
 | **K-Means** | Segmentation équipes | - | Silhouette: 0.71 | Cluster profiles |
 
-*Détails techniques dans [docs/model_performance.md](docs/model_performance.md)*
+*Détails techniques dans [docs/model_performance.md](ubisoft-people-analytics-demo/docs/model_performance.md)*
 
 ## ⚙️ Installation et démarrage
 
@@ -179,7 +168,7 @@ ubisoft_people_analytics/
 - ✅ Validation par experts psychoéducation
 - ✅ Respect principes neurodiversité
 
-*Documentation complète : [docs/ethics_compliance.md](docs/ethics_compliance.md)*
+*Documentation complète : [docs/ethics_compliance.md](ubisoft-people-analytics-demo/docs/ethics_compliance.md)*
 
 ## 🧪 Tests et qualité
 
@@ -195,7 +184,7 @@ flake8 src/ tests/
 
 ## 🤝 Contribution
 
-Ce projet suit les principes du **développement collaboratif**. Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour :
+Ce projet suit les principes du **développement collaboratif**. Consultez [CONTRIBUTING.md](ubisoft-people-analytics-demo/CONTRIBUTING.md) pour :
 - 🔄 Process de contribution
 - 📝 Standards de code
 - 🧪 Guidelines de testing
@@ -229,7 +218,7 @@ Ce projet suit les principes du **développement collaboratif**. Consultez [CONT
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT - voir [LICENSE](LICENSE) pour détails.
+Ce projet est sous licence MIT - voir [LICENSE](ubisoft-people-analytics-demo/LICENSE) pour détails.
 
 ---
 
