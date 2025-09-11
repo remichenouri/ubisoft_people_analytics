@@ -13,15 +13,6 @@
 
 > **🚀 [Demo Live](https://[your-app.streamlit.app](https://ubisoftpeopleanalytics.streamlit.app/))** | **📊 [Notebook d'analyse](notebooks/analysis_demo.ipynb)** | **📹 [Video Demo - À venir]**
 
-# Pour les screenshots manquants :
-### Interface principale
-![Dashboard Executive](screenshots/dashboard_executive.png)
-*Screenshot à ajouter - Interface en développement*
-
-### Détection profils neurodivergents  
-![Neurodiversity Detection](screenshots/neurodiversity_detection.png)
-*Démonstration des algorithmes de détection*
-
 ## 🧠 Vue d'ensemble
 
 **Solution d'IA prédictive** pour optimiser la performance des équipes créatives en identifiant et accompagnant la neurodiversité dans l'industrie du gaming. Combine data science avancée et expertise psychoéducative pour transformer la gestion RH.
