@@ -5,6 +5,9 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/remichenouri/ubisoft_people_analytics/workflows/CI/badge.svg)](https://github.com/remichenouri/ubisoft_people_analytics/actions)
+[![GitHub stars](https://img.shields.io/github/stars/remichenouri/ubisoft_people_analytics)](https://github.com/remichenouri/ubisoft_people_analytics/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/remichenouri/ubisoft_people_analytics)](https://github.com/remichenouri/ubisoft_people_analytics/issues)
+
 
 *Optimisation Performance Équipes via Intelligence Artificielle et Détection Neurodiversité*
 
