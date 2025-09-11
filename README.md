@@ -56,11 +56,9 @@ C --> D[ML Models]
 D --> E[Prediction API]
 E --> F[Streamlit Dashboard]
 
-text
 G[PostgreSQL] --> B
 H[HR Systems] --> B
 I[Performance Data] --> B
-text
 
 ### Stack technologique
 - **ML/IA** : Scikit-learn, XGBoost, SHAP (explainabilité)
@@ -117,13 +115,9 @@ cp .env.example .env
 5. Lancer application
 streamlit run src/app.py
 
-text
-
 ### Avec Docker
 docker build -t ubisoft-analytics .
 docker run -p 8501:8501 ubisoft-analytics
-
-text
 
 ### Données de démonstration
 Générer dataset synthétique
@@ -132,36 +126,55 @@ python src/data/generate_demo_data.py
 Ou utiliser données anonymisées
 python src/data/load_sample_data.py
 
-text
-
 ## 📁 Structure du projet
 
 ubisoft_people_analytics/
-├── 📊 business-case/ # ROI et impact business
-│ ├── roi_calculation.md
-│ ├── market_analysis.md
-│ └── competitive_advantage.md
-├── 📸 screenshots/ # Captures interface
-├── 📚 docs/ # Documentation technique
-│ ├── architecture.md
-│ ├── data_dictionary.md
-│ ├── model_performance.md
-│ └── deployment_guide.md
-├── 📓 notebooks/ # Analyses exploratoires
-│ ├── analysis_demo.ipynb
-│ └── model_validation.ipynb
-├── 🐍 src/ # Code source
-│ ├── config/
-│ ├── data/
-│ ├── models/
-│ ├── utils/
-│ └── visualization/
-├── 🧪 tests/ # Tests unitaires
-├── 🚀 deployment/ # Configuration déploiement
-├── 📊 data/ # Datasets (anonymisés)
-└── 🤖 models/ # Modèles entraînés
 
-text
+├── 📊 business-case/ # ROI et impact business
+
+│ ├── roi_calculation.md
+
+│ ├── market_analysis.md
+
+│ └── competitive_advantage.md
+
+├── 📸 screenshots/ # Captures interface
+
+├── 📚 docs/ # Documentation technique
+
+│ ├── architecture.md
+
+│ ├── data_dictionary.md
+
+│ ├── model_performance.md
+
+│ └── deployment_guide.md
+
+├── 📓 notebooks/ # Analyses exploratoires
+
+│ ├── analysis_demo.ipynb
+
+│ └── model_validation.ipynb
+
+├── 🐍 src/ # Code source
+
+│ ├── config/
+
+│ ├── data/
+
+│ ├── models/
+
+│ ├── utils/
+
+│ └── visualization/
+
+├── 🧪 tests/ # Tests unitaires
+
+├── 🚀 deployment/ # Configuration déploiement
+
+├── 📊 data/ # Datasets (anonymisés)
+
+└── 🤖 models/ # Modèles entraînés
 
 ## 🔒 Conformité et éthique
 
@@ -190,8 +203,6 @@ pytest --cov=src tests/
 Linting
 black src/ tests/
 flake8 src/ tests/
-
-text
 
 ## 🤝 Contribution
 
