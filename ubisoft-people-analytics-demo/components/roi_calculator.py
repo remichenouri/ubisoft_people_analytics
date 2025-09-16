@@ -138,18 +138,19 @@ def render_roi_calculator_improved(df_roi):
     
     st.subheader("🎯 Recommandations Stratégiques ML-Driven")
     
-    if roi_percentage > 200:
+    if roi_pct > 200:
         st.success("🚀 **ROI Exceptionnel** - Programme hautement rentable ! Déployez rapidement.")
         priority = "HAUTE"
-    elif roi_percentage > 100:
+    elif roi_pct > 100:
         st.info("💡 **ROI Solide** - Investissement judicieux avec retours mesurables.")
         priority = "MOYENNE"
-    elif roi_percentage > 0:
+    elif roi_pct > 0:
         st.warning("⚠️ **ROI Modéré** - Optimisez les paramètres avant déploiement.")
         priority = "FAIBLE"
     else:
         st.error("❌ **ROI Négatif** - Revisitez la stratégie d'intervention.")
         priority = "CRITIQUE"
+
     
     recommendations = [
         f"🎯 **Ciblage ML**: Le modèle identifie {high_risk_employees} employés prioritaires (précision {model_accuracy:.1%})",
@@ -193,4 +194,5 @@ def render_roi_calculator_improved(df_roi):
 # Fonction de compatibilité avec l'ancien nom
 def render_roi_calculator(df_roi):
     return render_roi_calculator_improved(df_roi)
+
 
