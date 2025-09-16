@@ -6,172 +6,134 @@ import numpy as np
 
 def render_roi_calculator_improved(df_roi):
     st.header("💰 ROI Calculator - Retention & Diversity Programs")
-    
-    # ========== SECTION 1: INTÉGRATION AVEC LE MODÈLE DE RÉTENTION ==========
-    
+
+    # SECTION 1: ML-Powered ROI Prediction
     st.subheader("🎯 ML-Powered ROI Prediction")
-    
     col1, col2 = st.columns(2)
-    
     with col1:
         st.info("**🤖 Modèle ML Integration**")
-        st.write("Utilise les prédictions du modèle de rétention sans fuite pour calculer un ROI précis")
-        
-        # Simulation des prédictions du modèle (à connecter avec retention_models.py)
-        high_risk_employees = st.number_input("Employés à haut risque (ML)", 20, 200, 75, 
-                                            help="Identifiés par le modèle de rétention")
-        
+        high_risk_employees = st.number_input("Employés à haut risque (ML)", 20, 200, 75)
         medium_risk_employees = st.number_input("Employés à risque modéré (ML)", 50, 300, 120)
-        
-        model_accuracy = st.slider("Précision du modèle ML", 0.6, 0.95, 0.82, 0.01,
-                                 help="AUC score du modèle de rétention")
-    
+        model_accuracy = st.slider("Précision du modèle ML", 0.6, 0.95, 0.82, 0.01)
     with col2:
         st.info("**💼 Paramètres Entreprise**")
         company_size = st.number_input("Taille entreprise", 500, 5000, 1200)
         avg_salary = st.number_input("Salaire moyen (€)", 40000, 120000, 75000)
         current_turnover = st.slider("Taux turnover actuel (%)", 5, 30, 15)
-    
-    # ========== SECTION 2: PARAMÈTRES PROGRAMME ==========
-    
+
+    # SECTION 2: Program Parameters
     st.subheader("🎛️ Program Parameters")
-    
     col1, col2, col3 = st.columns(3)
-    
     with col1:
         st.write("**💰 Investissements**")
         program_investment = st.number_input("Investment programme (€)", 10000, 500000, 150000)
         cost_per_intervention = st.number_input("Coût par intervention (€)", 2000, 15000, 6000)
         implementation_months = st.slider("Durée implémentation (mois)", 3, 24, 12)
-    
     with col2:
         st.write("**🎯 Efficacité Ciblage**")
         intervention_success_rate = st.slider("Taux succès intervention", 0.2, 0.8, 0.45, 0.05)
-        targeting_precision = st.slider("Précision ciblage", 0.6, 0.95, 0.78, 0.01,
-                                       help="% d'employés réellement à risque parmi ceux ciblés")
-    
+        targeting_precision = st.slider("Précision ciblage", 0.6, 0.95, 0.78, 0.01)
     with col3:
         st.write("**📊 Impact Différentiel**")
         neuro_retention_boost = st.slider("Boost rétention neurodivergents (%)", 5, 40, 18, 1)
         regular_retention_boost = st.slider("Boost rétention autres (%)", 3, 25, 12, 1)
-    
-    # ========== SECTION 3: CALCULS ROI AVANCÉS ==========
-    
-    # Coût de remplacement par employé
-    replacement_cost_multiplier = 1.8  # Recherche indique 1.5-2x salaire
-    cost_per_departure = avg_salary * replacement_cost_multiplier
-    
-    # Calcul des employés qui seraient partis sans intervention
-    baseline_departures_high = high_risk_employees * 0.75 * targeting_precision
-    baseline_departures_medium = medium_risk_employees * 0.45 * targeting_precision
-    total_baseline_departures = baseline_departures_high + baseline_departures_medium
-    
-    # Employés sauvés grâce à l'intervention
-    employees_saved = total_baseline_departures * intervention_success_rate
-    
-    # Économies totales
-    total_savings = employees_saved * cost_per_departure
-    
-    # Coûts du programme
-    employees_targeted = high_risk_employees + medium_risk_employees
-    total_intervention_cost = employees_targeted * cost_per_intervention
+
+    # SECTION 3: Calculs ROI
+    multiplier = 1.8
+    cost_per_departure = avg_salary * multiplier
+    base_high = high_risk_employees * 0.75 * targeting_precision
+    base_med = medium_risk_employees * 0.45 * targeting_precision
+    total_base = base_high + base_med
+    saved = total_base * intervention_success_rate
+    total_savings = saved * cost_per_departure
+    total_interventions = high_risk_employees + medium_risk_employees
+    total_intervention_cost = total_interventions * cost_per_intervention
     total_program_cost = program_investment + total_intervention_cost
-    
-    # ROI net et métriques
     net_roi = total_savings - total_program_cost
-    roi_percentage = (net_roi / total_program_cost) * 100 if total_program_cost > 0 else 0
-    
-    # ========== SECTION 4: AFFICHAGE RÉSULTATS ==========
-    
+    roi_pct = (net_roi / total_program_cost) * 100 if total_program_cost>0 else 0
+
+    # SECTION 4: Résultats
     st.subheader("📊 ROI Analysis Results")
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("💰 Économies Totales", f"€{total_savings:,.0f}", f"{saved:.0f} sauvés")
+    m2.metric("📈 ROI Net (An 1)", f"€{net_roi:,.0f}", f"{roi_pct:.0f}%")
+    months = (total_program_cost/(total_savings/12)) if total_savings>0 else float('inf')
+    m3.metric("⏱️ Récupération", f"{months:.1f} mois" if months!=float('inf') else "N/A", "Break-even")
+    confidence = model_accuracy * targeting_precision * intervention_success_rate
+    m4.metric("🎯 Score Confiance", f"{confidence:.1%}", "Fiabilité")
+
+    # SECTION 5: Dashboard Interactif
+    st.subheader("📊 Dashboard ROI Interactif")
+
+    # 5.1 Bubble Chart
+    col1, col2 = st.columns(2)
     with col1:
-        st.metric(
-            "💰 Économies Totales",
-            f"€{total_savings:,.0f}",
-            f"{employees_saved:.0f} employés sauvés"
-        )
-    
+        scenarios = []
+        for sr in np.arange(0.2, 0.8, 0.1):
+            for pr in np.arange(0.6, 0.9, 0.05):
+                base = (high_risk_employees*0.75+medium_risk_employees*0.45)*pr
+                saved_s = base*sr
+                savings = saved_s*cost_per_departure
+                roi = ((savings-total_program_cost)/total_program_cost)*100
+                scenarios.append({"sr":sr*100,"pr":pr*100,"roi":roi,"conf":sr*pr})
+        df_s = pd.DataFrame(scenarios)
+
+        fig_b = go.Figure(go.Scatter(
+            x=df_s["sr"], y=df_s["pr"], mode="markers",
+            marker=dict(size=df_s["roi"]/5, color=df_s["roi"], colorscale="RdYlGn", showscale=True),
+            text=[f"ROI : {r:.0f}%<br>Conf : {c:.1%}" for r,c in zip(df_s["roi"],df_s["conf"])],
+            hovertemplate="%{x}% SR<br>%{y}% PR<br>%{text}<extra></extra>"
+        ))
+        fig_b.update_layout(title="🎯 Matrice ROI par Succès vs Précision",
+                            xaxis_title="Taux Succès (%)", yaxis_title="Précision (%)", height=450)
+        st.plotly_chart(fig_b, use_container_width=True)
+
+    # 5.2 Waterfall Chart
     with col2:
-        st.metric(
-            "📈 ROI Net (An 1)",
-            f"€{net_roi:,.0f}",
-            f"{roi_percentage:.0f}% retour"
-        )
-    
-    with col3:
-        payback_months = (total_program_cost / (total_savings / 12)) if total_savings > 0 else float('inf')
-        st.metric(
-            "⏱️ Récupération",
-            f"{payback_months:.1f} mois" if payback_months != float('inf') else "N/A",
-            "Break-even"
-        )
-    
-    with col4:
-        confidence_score = model_accuracy * targeting_precision * intervention_success_rate
-        st.metric(
-            "🎯 Score Confiance",
-            f"{confidence_score:.1%}",
-            "Fiabilité prédiction"
-        )
-    
-    # ========== SECTION 5: GRAPHIQUES AVANCÉS ==========
-    
-    # Graphique de sensibilité multi-variables
-    st.subheader("📊 Analyse de Sensibilité Multi-Variables")
-    
-    sensitivity_var = st.selectbox(
-        "Variable à analyser",
-        ["Taux succès intervention", "Précision ciblage", "Coût intervention", "Précision modèle ML"]
-    )
-    
-    if sensitivity_var == "Taux succès intervention":
-        x_values = np.arange(0.2, 0.8, 0.02)
-        roi_values = []
-        for rate in x_values:
-            saved = total_baseline_departures * rate
-            savings = saved * cost_per_departure
-            roi = ((savings - total_program_cost) / total_program_cost) * 100
-            roi_values.append(roi)
-        x_label = "Taux de Succès"
-    
-    elif sensitivity_var == "Précision ciblage":
-        x_values = np.arange(0.5, 0.95, 0.01)
-        roi_values = []
-        for precision in x_values:
-            baseline_deps = (high_risk_employees * 0.75 + medium_risk_employees * 0.45) * precision
-            saved = baseline_deps * intervention_success_rate
-            savings = saved * cost_per_departure
-            roi = ((savings - total_program_cost) / total_program_cost) * 100
-            roi_values.append(roi)
-        x_label = "Précision Ciblage"
-    
-    fig_sensitivity = go.Figure()
-    fig_sensitivity.add_trace(go.Scatter(
-        x=x_values * 100,
-        y=roi_values,
-        mode='lines+markers',
-        name='ROI %',
-        line=dict(color='#667eea', width=3),
-        marker=dict(size=6)
+        cats = ["Invest. Init.", "Coût Int.", "Économies", "ROI Net"]
+        vals = [-program_investment, -total_intervention_cost, total_savings, net_roi]
+        fig_w = go.Figure(go.Waterfall(
+            orientation="v", measure=["relative"]*3+["total"], x=cats, y=vals,
+            text=[f"€{abs(v):,.0f}" for v in vals], textposition="outside",
+            connector={"line":{"color":"#555"}}
+        ))
+        fig_w.update_layout(title="💰 Décomposition ROI - Waterfall", height=450)
+        st.plotly_chart(fig_w, use_container_width=True)
+
+    # 5.3 Heatmap
+    st.subheader("🔥 Heatmap de Sensibilité ROI")
+    srs = np.arange(0.2,0.8,0.05)
+    prs = np.arange(0.6,0.95,0.02)
+    heat = np.zeros((len(srs),len(prs)))
+    for i,sr in enumerate(srs):
+        for j,pr in enumerate(prs):
+            base = (high_risk_employees*0.75+medium_risk_employees*0.45)*pr
+            saved_s = base*sr
+            savings = saved_s*cost_per_departure
+            heat[i,j]=((savings-total_program_cost)/total_program_cost)*100
+    fig_h = go.Figure(go.Heatmap(
+        z=heat, x=[f"{p:.0%}" for p in prs], y=[f"{s:.0%}" for s in srs],
+        colorscale="RdYlGn", colorbar=dict(title="ROI %")
     ))
-    
-    fig_sensitivity.add_hline(y=0, line_dash="dash", line_color="red", 
-                            annotation_text="Seuil de rentabilité")
-    fig_sensitivity.add_hline(y=100, line_dash="dot", line_color="green", 
-                            annotation_text="ROI 100%")
-    
-    fig_sensitivity.update_layout(
-        title=f"Impact de '{sensitivity_var}' sur le ROI",
-        xaxis_title=f"{x_label} (%)",
-        yaxis_title="ROI (%)",
-        height=400
-    )
-    
-    st.plotly_chart(fig_sensitivity, use_container_width=True)
-    
+    fig_h.update_layout(title="🌡️ Heatmap ROI vs Paramètres", 
+                        xaxis_title="Précision", yaxis_title="Succès", height=400)
+    st.plotly_chart(fig_h, use_container_width=True)
+
+    # 5.4 Timeline ROI sur 5 ans
+    st.subheader("📈 Évolution du ROI sur 5 ans")
+    years = list(range(1,6))
+    cum = []
+    for k,year in enumerate(years):
+        factor = 0.9**k
+        yearly = total_savings*factor
+        value = yearly-total_program_cost if k==0 else cum[-1]+yearly
+        cum.append(value)
+    fig_t = go.Figure(go.Scatter(x=years, y=cum, mode="lines+markers", fill="tonexty",
+                                 line=dict(color="#667eea",width=3), marker=dict(size=8)))
+    fig_t.add_hline(y=0, line_dash="dash", line_color="red", annotation_text="Break-even")
+    fig_t.update_layout(title="🌎 ROI Cumulé sur 5 ans", xaxis_title="Années", yaxis_title="ROI (€)", height=400)
+    st.plotly_chart(fig_t, use_container_width=True)
+
     # ========== SECTION 6: RECOMMANDATIONS STRATÉGIQUES ==========
     
     st.subheader("🎯 Recommandations Stratégiques ML-Driven")
@@ -231,3 +193,4 @@ def render_roi_calculator_improved(df_roi):
 # Fonction de compatibilité avec l'ancien nom
 def render_roi_calculator(df_roi):
     return render_roi_calculator_improved(df_roi)
+
